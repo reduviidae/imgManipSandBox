@@ -9,7 +9,6 @@ const jimpFrame = new Jimp(4200, 4800, 0x0, (err, image) => {
 
 console.timeEnd("jimp create");
 
-console.time("sharp create");
 
 const makeSharpFrame = async () => {
   const newFrame = await sharp({
@@ -35,7 +34,14 @@ const resizeSharpFrame = async () => {
       .toFile("sharpImgResized.png");
   });
 };
+console.time("sharp create");
 
-resizeSharpFrame();
+makeSharpFrame()
+const used = process.memoryUsage();
+for (let key in used) {
+  console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
+}
+
+// resizeSharpFrame();
 
 console.timeEnd("sharp create");
