@@ -1,0 +1,5 @@
+function should take in these arguments:
+{x, y, size/ratio, img_url}
+
+
+create a function that adds space to a 4200 x 4800
